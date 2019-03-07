@@ -23,6 +23,11 @@
 stroke:dimgrey;
 stroke-width:5px;
 }
+	
+	.text {
+            font-family: sans-serif;
+            font-size: 11px;
+       }
 
         .dot {
             stroke: none;
@@ -37,7 +42,11 @@ stroke-width:5px;
         }
          </style>
     </head>
+
+
     <body style="background-color:antiquewhite;">
+	<center>
+
         <div id="vis-container"></div>
 
         <!-- Optionally reference your vis JS file here, or define in a script tag -->
@@ -56,8 +65,8 @@ stroke-width:5px;
 
           var makeVis = function(data) {
               // Common pattern for defining vis size and margins
-              var margin = { top: 20, right: 20, bottom: 50, left: 60 },
-                  width  = 960 - margin.left - margin.right,
+              var margin = { top: 20, right: 20, bottom: 70, left: 80 },
+                  width  = 800 - margin.left - margin.right,
                   height = 500 - margin.top - margin.bottom;
 
               // Add the visualization svg canvas to the vis-container <div>
@@ -77,7 +86,7 @@ stroke-width:5px;
 
               var yScale = d3.scale.linear()
                   .domain([ d3.min(data, function(d) { return d.newsweek_score; }) - 0.03,
-                            d3.max(data, function(d) { return d.newsweek_score; }) + 0.1 ])
+                            d3.max(data, function(d) { return d.newsweek_score; }) + 0.2 ])
                   .range([height, 0]); // flip order because y-axis origin is upper LEFT
 
               // Define our axes
@@ -97,9 +106,9 @@ stroke-width:5px;
                 .append("text")
                   .attr("class", "label")
                   .attr("x", width/2) // x-offset from the xAxis, move label all the way to the right
-                  .attr("y", 36)    // y-offset from the xAxis, moves text UPWARD!
+                  .attr("y", 56)    // y-offset from the xAxis, moves text UPWARD!
                   .style("text-anchor", "middle") // right-justify text
-                  .text("Climate Change Belief Level");
+                  .text("Climate Change Belief Level (%)");
 
               // Add y-axis to the canvas
               canvas.append("g")
@@ -108,7 +117,7 @@ stroke-width:5px;
                 .append("text")
                   .attr("class", "label")
                   .attr("transform", "rotate(-90)") // although axis is rotated, text is not
-                  .attr("y", -40) // y-offset from yAxis, moves text to the RIGHT because it's rotated, and positive y is DOWN
+                  .attr("y", -66) // y-offset from yAxis, moves text to the RIGHT because it's rotated, and positive y is DOWN
                   .attr("x", -height/2) // 
                   .style("text-anchor", "middle")
                   .text("Newsweek Green Score");
@@ -141,6 +150,40 @@ stroke-width:5px;
                       .style("opacity", 0); // don't care about position!
               };
 
+// State maxes
+state_max = [];
+for(var i = 0; i < data.length ; i++){
+		   if (( state_max[data[i]["state"]] === undefined)){
+		   state_max[data[i]["state"]] = {"x": 0, "y": 0};
+		   }
+		   if( data[i]["newsweek_score"] > state_max[data[i]["state"]].y){
+  state_max[data[i]["state"]].x = data[i]["green"];
+  state_max[data[i]["state"]].y = data[i]["newsweek_score"];
+  state_max[data[i]["state"]]["state"] = data[i]["state"];
+};
+};
+//console.log(state_max, state_max.length);
+label_pos = [];
+state_keys = Object.keys(state_max);
+for (var i=0; i < state_keys.length; i++){
+		  console.log(state_max[state_keys[i]]);
+		  label_pos.push(state_max[state_keys[i]]);
+};
+label_pos.sort(function(x, y){
+		  console.log(x, y);
+   return d3.ascending(x.x, y.x);
+})
+console.log(label_pos);
+canvas.selectAll(".text")
+  .data(label_pos)
+ .enter().append("text")
+  .attr("x", function(d) { return xScale(d.x); })
+  .attr("y", function(d, i) { return  yScale(0.95 - (i % 5)*0.035);})//i/50 + 0.1);})//0.5*(1 - d.y) + d.y); })
+  .attr("dx", "-0.5em")
+  .attr("dy", "-1em")
+  .text(function(d) { return d.state;})
+		  .style("fill", function(d) { return colorScale(d.state);});
+
               // Add data points!
 canvas.selectAll(".dot")
 .data(data)
@@ -152,6 +195,9 @@ canvas.selectAll(".dot")
 .style("fill", function(d) { return colorScale(d.state); })
 .on("mouseover", tipMouseover)
 .on("mouseout", tipMouseout);
+
+
+
 
 //var line = d3.svg.line()
 //    .x(function(d) { return xScale(d.green); })
@@ -166,5 +212,6 @@ canvas.selectAll(".dot")
 
           };
         </script>
+</center>
     </body>
 </html>
