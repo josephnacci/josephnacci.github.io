@@ -153,14 +153,14 @@ canvas.selectAll(".dot")
 .on("mouseover", tipMouseover)
 .on("mouseout", tipMouseout);
 
-var line = d3.svg.line()
-    .x(function(d) { return xScale(d.green); })
-    .y(function(d) { console.log(d.fit);return yScale(d.fit); });
-
-  canvas.append("path")
-      .datum(data)
-      .attr("class", "line")
-      .attr("d", line);
+//var line = d3.svg.line()
+//    .x(function(d) { return xScale(d.green); })
+//    .y(function(d) { console.log(d.fit);return yScale(d.fit); });
+//
+//  canvas.append("path")
+//      .datum(data)
+//      .attr("class", "line")
+//      .attr("d", line);
 
 
 
