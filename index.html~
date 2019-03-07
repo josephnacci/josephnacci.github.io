@@ -45,7 +45,7 @@ stroke-width:5px;
 
 
     <body style="background-color:rgba(250, 235, 215, .7);">
-      <image src="./logo.horizontal.black.png" style="width:10%;"></image>
+      <image src="./logo.png" style="width:10%;"></image>
 	<center>
         <div id="vis-container"></div>
         <!-- Optionally reference your vis JS file here, or define in a script tag -->

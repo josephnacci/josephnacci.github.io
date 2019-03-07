@@ -183,7 +183,30 @@ canvas.selectAll(".text")
   .text(function(d) { return d.state;})
 		  .style("fill", function(d) { return colorScale(d.state);});
 
+
+canvas.append('line')
+    .style("stroke", "black")
+    .style("stroke-width", 2)
+		  .style("stroke-dasharray", ("3, 3"))
+    .attr("x1", xScale(40))
+    .attr("y1", yScale(0.5))
+    .attr("x2", xScale(70))
+    .attr("y2", yScale(0.5)); 
+
+
+
+canvas.append('line')
+    .style("stroke", "black")
+    .style("stroke-width", 2)
+		  .style("stroke-dasharray", ("3, 3"))
+    .attr("x1", xScale(55))
+    .attr("y1", yScale(-0.03))
+    .attr("x2", xScale(55))
+    .attr("y2", yScale(0.85)); 
+
               // Add data points!
+
+
 canvas.selectAll(".dot")
 .data(data)
 .enter().append("circle")
@@ -201,7 +224,7 @@ canvas.selectAll(".dot")
 //var line = d3.svg.line()
 //    .x(function(d) { return xScale(d.green); })
 //    .y(function(d) { console.log(d.fit);return yScale(d.fit); });
-//
+
 //  canvas.append("path")
 //      .datum(data)
 //      .attr("class", "line")
