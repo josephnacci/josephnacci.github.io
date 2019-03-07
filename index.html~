@@ -23,6 +23,11 @@
 stroke:dimgrey;
 stroke-width:5px;
 }
+	
+	.text {
+            font-family: sans-serif;
+            font-size: 11px;
+       }
 
         .dot {
             stroke: none;
@@ -81,7 +86,7 @@ stroke-width:5px;
 
               var yScale = d3.scale.linear()
                   .domain([ d3.min(data, function(d) { return d.newsweek_score; }) - 0.03,
-                            d3.max(data, function(d) { return d.newsweek_score; }) + 0.1 ])
+                            d3.max(data, function(d) { return d.newsweek_score; }) + 0.2 ])
                   .range([height, 0]); // flip order because y-axis origin is upper LEFT
 
               // Define our axes
@@ -158,23 +163,26 @@ for(var i = 0; i < data.length ; i++){
 };
 };
 //console.log(state_max, state_max.length);
-//label_pos = {};
-//for (var i=0; i < state_max.length; i++){
-//		  console.log(state_max[i]);
-//		  label_pos.push(state_max[i]);
-//};
-//console.log(label_pos);
-
-
-canvas.selectAll(".dodo")
-  .data(state_max)
+label_pos = [];
+state_keys = Object.keys(state_max);
+for (var i=0; i < state_keys.length; i++){
+		  console.log(state_max[state_keys[i]]);
+		  label_pos.push(state_max[state_keys[i]]);
+};
+label_pos.sort(function(x, y){
+		  console.log(x, y);
+   return d3.ascending(x.x, y.x);
+})
+console.log(label_pos);
+canvas.selectAll(".text")
+  .data(label_pos)
  .enter().append("text")
-  .attr("class", "dodo")
-  .attr("x", function(d) { console.log(state_max); return xScale(d.x); })
-  .attr("y", function(d) { return yScale(d.y); })
-  .attr("dx", ".71em")
-  .attr("dy", ".35em")
-  .text(function(d) { return d.state;});
+  .attr("x", function(d) { return xScale(d.x); })
+  .attr("y", function(d, i) { return  yScale(0.95 - (i % 5)*0.035);})//i/50 + 0.1);})//0.5*(1 - d.y) + d.y); })
+  .attr("dx", "-0.5em")
+  .attr("dy", "-1em")
+  .text(function(d) { return d.state;})
+		  .style("fill", function(d) { return colorScale(d.state);});
 
               // Add data points!
 canvas.selectAll(".dot")
