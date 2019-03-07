@@ -44,7 +44,8 @@ stroke-width:5px;
     </head>
 
 
-    <body style="background-color:antiquewhite;">
+    <body style="background-color:rgba(250, 235, 215, .7);">
+      <image src="logo.horizontal.black
 	<center>
 
         <div id="vis-container"></div>
@@ -66,8 +67,8 @@ stroke-width:5px;
           var makeVis = function(data) {
               // Common pattern for defining vis size and margins
               var margin = { top: 20, right: 20, bottom: 70, left: 80 },
-                  width  = 800 - margin.left - margin.right,
-                  height = 500 - margin.top - margin.bottom;
+                  width  = 700 - margin.left - margin.right,
+                  height = 600 - margin.top - margin.bottom;
 
               // Add the visualization svg canvas to the vis-container <div>
               var canvas = d3.select("#vis-container").append("svg")
@@ -178,7 +179,7 @@ canvas.selectAll(".text")
   .data(label_pos)
  .enter().append("text")
   .attr("x", function(d) { return xScale(d.x); })
-  .attr("y", function(d, i) { return  yScale(0.95 - (i % 5)*0.035);})//i/50 + 0.1);})//0.5*(1 - d.y) + d.y); })
+  .attr("y", function(d, i) { return  yScale(0.96 - (i % 5)*0.035);})//i/50 + 0.1);})//0.5*(1 - d.y) + d.y); })
   .attr("dx", "-0.5em")
   .attr("dy", "-1em")
   .text(function(d) { return d.state;})
@@ -190,7 +191,7 @@ canvas.selectAll(".dot")
 .enter().append("circle")
 .attr("class", "dot")
 .attr("r", 3) // radius size, could map to another data dimension
-.attr("cx", function(d) { return xScale( d.green ); })     // x position
+.attr("cx", function(d) { return xScale( d.green + (Math.random()-0.5)*0.2 ); })     // x position
 .attr("cy", function(d) { return yScale( d.newsweek_score ); })  // y position
 .style("fill", function(d) { return colorScale(d.state); })
 .on("mouseover", tipMouseover)

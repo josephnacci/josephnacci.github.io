@@ -45,10 +45,9 @@ stroke-width:5px;
 
 
     <body style="background-color:rgba(250, 235, 215, .7);">
+      <image src="logo.horizontal.black.png" style="width:10%;"></image>
 	<center>
-
         <div id="vis-container"></div>
-
         <!-- Optionally reference your vis JS file here, or define in a script tag -->
         <!-- <script type="text/javascript" src="js/my-vis.js"></script> -->
 	<script src="lib/d3.v3.min.js" charset="utf-8"></script>
@@ -65,7 +64,7 @@ stroke-width:5px;
 
           var makeVis = function(data) {
               // Common pattern for defining vis size and margins
-              var margin = { top: 20, right: 20, bottom: 70, left: 80 },
+              var margin = { top: -10, right: 20, bottom: 70, left: 80 },
                   width  = 700 - margin.left - margin.right,
                   height = 600 - margin.top - margin.bottom;
 
