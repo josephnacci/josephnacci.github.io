@@ -6,7 +6,40 @@
 
 
         <!-- Styles for our vis  -->
+<style>
+        body {
+            font: 15px sans-serif;
+        }
 
+        .axis path,
+        .axis line {
+            fill: none;
+            stroke: #000;
+            shape-rendering: crispEdges;
+
+        }
+	.line{
+stroke:dimgrey;
+stroke-width:5px;
+}
+	
+	.text {
+            font-family: sans-serif;
+            font-size: 11px;
+       }
+
+        .dot {
+            stroke: none;
+        }
+        .tooltip {
+            position: absolute;
+            font-size: 12px;
+            width:  auto;
+            height: auto;
+            pointer-events: none;
+            background-color: white;
+        }
+         </style>
     </head>
 
 
@@ -18,40 +51,195 @@
 
 
 	<div>
-<ul>
-<li>Manchester United (FootballIndex: Current Customer)0.03906079421572222</li>
-<li>ClariSpray (Over-the-Counter drugs: Current Customer)0.003461710036836918</li>
-<li>Fructis (Hair Products & Services: Current Customer)0.05236337534235543</li>
-<li>Lush (Skincare & Cosmetics: Current Customer)0.015635327145894683</li>
-<li>Xyzal (Over-the-Counter drugs: Current Customer)0.004508972260985345</li>
-<li>Sunchips (Snacks: Current Customer)0.07272286256555133</li>
-<li>M & T Bank (Consumer Banks: Current Customer)0.012243577910595433</li>
-<li>Chex Mix (Snacks: Current Customer)0.06722581372499221</li>
-<li>John Hancock (Insurance: Current Customer)0.011025584059236279</li>
-<li>GameStop (Sports, Electronics, Music: Current Customer)0.07863113014398102</li>
-<li>Cricket Wireless (Communications, Media, and Technology: Current Customer)0.029942029663302703</li>
-<li>Diet Mountain Dew (Non-Alcoholic Beverages: Current Customer)0.0375238333331603</li>
-<li>Talbots (Clothing (Women's): Current Customer)0.010498991897266182</li>
-<li>Sunoco (Retail Gasoline, Tires, and Auto Accessories: Current Customer)0.06892154999791184</li>
-<li>Land-O-Lakes (butter) (Food Brands: Current Customer)0.1522573646013164</li>
-<li>Rold Gold (Snacks: Current Customer)0.054599338767718775</li>
-<li>ACT (Household and Personal Care: Current Customer)0.023208638266659688</li>
-<li>Northwestern Mutual (Insurance: Current Customer)0.009102549790266713</li>
-<li>Oreo (Food Brands: Current Customer)0.20395209274913326</li>
-<li>Trojan (Over-the-Counter drugs: Current Customer)0.02039170253875399</li>
-<li>Old Spice (Household and Personal Care: Current Customer)0.07488836269023671</li>
-<li>Hot Topic (Clothing (All other): Current Customer)0.025722772524982274</li>
-<li>Coricidin (Over-the-Counter drugs: Current Customer)0.008043478009396532</li>
-<li>F.Y.E (Sports, Electronics, Music: Current Customer)0.008707414055970808</li>
-<li>Colgate (Household and Personal Care: Current Customer)0.19136140828926326</li>
-<li>Gibson (Appliances: Current Customer)0.003555739193741116</li>
-<li>Cinnamon Toast Crunch (Food Brands: Current Customer)0.0835076061731881</li>
-<li>Maurice's (Clothing (All other): Current Customer)0.012440174634280833</li>
-<li>Carmax.com (Online Brands: Current Customer)0.024082236426628024</li>
-<li>Hershey's (Food Brands: Current Customer)0.2514463167120455</li>
-<li>Spectrum (Cable, Satellite and Streaming TV: Current Customer)0.13992608397728218</li>
-<li>A & E (TV Networks: Current Customer)0.1673145512618807</li>
-</ul>
+	  <center>
+        <div id="vis-container"></div>
+        <!-- Optionally reference your vis JS file here, or define in a script tag -->
+        <!-- <script type="text/javascript" src="js/my-vis.js"></script> -->
+	<script src="lib/d3.v3.min.js" charset="utf-8"></script>
+        <script type="text/javascript">
+
+            d3.csv('./pitch_data.csv', function loadCallback(error, data) {
+                data.forEach(function(d) { // convert strings to numbers
+                    d.newsweek_score = +d.newsweek_score;
+                    d.green = +d.green;
+	        d.fit = +d.fit;
+                });
+                makeVis(data);
+            });
+
+          var makeVis = function(data) {
+              // Common pattern for defining vis size and margins
+              var margin = { top: -10, right: 20, bottom: 70, left: 80 },
+                  width  = 700 - margin.left - margin.right,
+                  height = 600 - margin.top - margin.bottom;
+
+              // Add the visualization svg canvas to the vis-container <div>
+              var canvas = d3.select("#vis-container").append("svg")
+                  .attr("width",  width  + margin.left + margin.right)
+                  .attr("height", height + margin.top  + margin.bottom)
+                .append("g")
+                  .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+              // Define our scales
+              var colorScale = d3.scale.category10();
+
+              var xScale = d3.scale.linear()
+                  .domain([ d3.min(data, function(d) { return d.green; }) - 1,
+                            d3.max(data, function(d) { return d.green; }) + 1 ])
+                  .range([0, width]);
+
+              var yScale = d3.scale.linear()
+                  .domain([ d3.min(data, function(d) { return d.newsweek_score; }) - 0.03,
+                            d3.max(data, function(d) { return d.newsweek_score; }) + 0.2 ])
+                  .range([height, 0]); // flip order because y-axis origin is upper LEFT
+
+              // Define our axes
+              var xAxis = d3.svg.axis()
+                  .scale(xScale)
+                  .orient('bottom');
+
+              var yAxis = d3.svg.axis()
+                  .scale(yScale)
+                  .orient('left');
+
+              // Add x-axis to the canvas
+              canvas.append("g")
+                  .attr("class", "x axis")
+                  .attr("transform", "translate(0," + height + ")") // move axis to the bottom of the canvas
+                  .call(xAxis)
+                .append("text")
+                  .attr("class", "label")
+                  .attr("x", width/2) // x-offset from the xAxis, move label all the way to the right
+                  .attr("y", 56)    // y-offset from the xAxis, moves text UPWARD!
+                  .style("text-anchor", "middle") // right-justify text
+                  .text("Climate Change Belief Level (%)");
+
+              // Add y-axis to the canvas
+              canvas.append("g")
+                  .attr("class", "y axis") // .orient('left') took care of axis positioning for us
+                  .call(yAxis)
+                .append("text")
+                  .attr("class", "label")
+                  .attr("transform", "rotate(-90)") // although axis is rotated, text is not
+                  .attr("y", -66) // y-offset from yAxis, moves text to the RIGHT because it's rotated, and positive y is DOWN
+                  .attr("x", -height/2) // 
+                  .style("text-anchor", "middle")
+                  .text("Newsweek Green Score");
+
+              // Add the tooltip container to the vis container
+              // it's invisible and its position/contents are defined during mouseover
+              var tooltip = d3.select("#vis-container").append("div")
+                  .attr("class", "tooltip")
+                  .style("opacity", 0);
+
+              // tooltip mouseover event handler
+              var tipMouseover = function(d) {
+                  var color = colorScale(d.state);
+                  var html  = d["Company Name"] + "<br/>" +
+              "<span style='color:" + color + ";'>" + d.state //+ "</span><br/>" +
+              //"<b>" + d.green + "</b> green, <b/>" + d.newsweek_score + "</b> newsweek_score";
+
+                  tooltip.html(html)
+                      .style("left", (d3.event.pageX + 15) + "px")
+                      .style("top", (d3.event.pageY - 14) + "px")
+                    .transition()
+                      .duration(200) // ms
+                      .style("opacity", .9) // started as 0!
+
+              };
+              // tooltip mouseout event handler
+              var tipMouseout = function(d) {
+                  tooltip.transition()
+                      .duration(300) // ms
+                      .style("opacity", 0); // don't care about position!
+              };
+
+// State maxes
+state_max = [];
+for(var i = 0; i < data.length ; i++){
+		      if (( state_max[data[i]["state"]] === undefined)){
+		      state_max[data[i]["state"]] = {"x": 0, "y": 0};
+		      }
+		      if( data[i]["newsweek_score"] > state_max[data[i]["state"]].y){
+  state_max[data[i]["state"]].x = data[i]["green"];
+  state_max[data[i]["state"]].y = data[i]["newsweek_score"];
+  state_max[data[i]["state"]]["state"] = data[i]["state"];
+};
+};
+//console.log(state_max, state_max.length);
+label_pos = [];
+state_keys = Object.keys(state_max);
+for (var i=0; i < state_keys.length; i++){
+		    console.log(state_max[state_keys[i]]);
+		    label_pos.push(state_max[state_keys[i]]);
+};
+label_pos.sort(function(x, y){
+		    console.log(x, y);
+   return d3.ascending(x.x, y.x);
+})
+console.log(label_pos);
+canvas.selectAll(".text")
+  .data(label_pos)
+ .enter().append("text")
+  .attr("x", function(d) { return xScale(d.x); })
+  .attr("y", function(d, i) { return  yScale(0.96 - (i % 5)*0.035);})//i/50 + 0.1);})//0.5*(1 - d.y) + d.y); })
+  .attr("dx", "-0.5em")
+  .attr("dy", "-1em")
+  .text(function(d) { return d.state;})
+		    .style("fill", function(d) { return colorScale(d.state);});
+
+
+canvas.append('line')
+    .style("stroke", "black")
+    .style("stroke-width", 2)
+		    .style("stroke-dasharray", ("3, 3"))
+    .attr("x1", xScale(40))
+    .attr("y1", yScale(0.5))
+    .attr("x2", xScale(70))
+    .attr("y2", yScale(0.5)); 
+
+
+
+canvas.append('line')
+    .style("stroke", "black")
+    .style("stroke-width", 2)
+		    .style("stroke-dasharray", ("3, 3"))
+    .attr("x1", xScale(55))
+    .attr("y1", yScale(-0.03))
+    .attr("x2", xScale(55))
+    .attr("y2", yScale(0.85)); 
+
+              // Add data points!
+
+
+canvas.selectAll(".dot")
+.data(data)
+.enter().append("circle")
+.attr("class", "dot")
+.attr("r", 3) // radius size, could map to another data dimension
+.attr("cx", function(d) { return xScale( d.green + (Math.random()-0.5)*0.2 ); })     // x position
+.attr("cy", function(d) { return yScale( d.newsweek_score ); })  // y position
+.style("fill", function(d) { return colorScale(d.state); })
+.on("mouseover", tipMouseover)
+.on("mouseout", tipMouseout);
+
+
+
+
+//var line = d3.svg.line()
+//    .x(function(d) { return xScale(d.green); })
+//    .y(function(d) { console.log(d.fit);return yScale(d.fit); });
+
+//  canvas.append("path")
+//      .datum(data)
+//      .attr("class", "line")
+//      .attr("d", line);
+
+
+
+          };
+        </script>
+</center>
 
 	</div>
     </body>
