@@ -27,7 +27,7 @@
 	  
 	  
 	  li{
-	  margin: 7px 0;
+	  margin: 6px 0;
 	  }
           .axis path,
           .axis line {
@@ -40,7 +40,13 @@
 stroke:dimgrey;
 stroke-width:5px;
 }
-	
+
+h1 { font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 24px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 26.4px; }
+h4 { font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 18px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 26.4px; }
+ h3 { font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 15.4px; }
+ p { font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 20px; } blockquote { font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 21px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 30px; } pre { font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 18.5667px; }
+
+
 	.text {
             font-family: sans-serif;
             font-size: 11px;
@@ -68,7 +74,7 @@ stroke-width:5px;
     </head>
 
 
-    <body style="background-color:rgba(250, 235, 215, .7);">
+    <body style="background-color:#f9f9fb;"><!--rgba(250, 235, 215, .7);">-->
       <image src="./logo.png" style="width:10%;"></image>
 	<center>
 	  <div max-width="60%;">
@@ -77,15 +83,16 @@ stroke-width:5px;
 	    <br>
 	    <p style="width:60%;">The size of the circles on this map correspond to the relative number of Price Chopper shoppers in the northeastern states. The color of the circles represents the over/under index compared to overall climate sentiment in each state. So the larger the green circle, the greater the opportunity for Green Mountain Energy specifically for Price Chopper shoppers. The smaller, red circles represent less of an opportunity.</p>
 	    <br><br>
-	    <h4>What brands to Price Chopper shoppers use most often?</h4>
+	    <h4>What brands do Price Chopper shoppers use most often?</h4>
             <iframe id="ifm" name="ifm" width="60%" height="500px" frameborder="0" src="https://nacci.sisense.com/app/main#/dashboards/5c993ac4df6099058808e926/widgets/5c99a0ecdf6099058808e933/?embed=true" scrolling="auto"></iframe>
-	    <p style="width:60%;">The horizontal axis shows the overall fraction of the population that is a current user of a product. The vertical shows how much this more this product is used by Price Chopper shoppers. Mouse-over the dots the upper right to see the high impact-moderate specificity brands to focus on, and the upper left for moderate impact-high specificity brands that are particularly popular among Price Chopper Shoppers.</p>
+	    <p style="width:60%;">The horizontal axis shows the overall fraction of the population that is a current user of a product. The vertical shows how much this more this product is used by Price Chopper shoppers. Mouse-over the dots the upper right to see the high impact-moderate specificity brands to focus on (brands that everybody uses, and that Price Chopper patrons use a little bit more than average), and the upper left for moderate impact-high specificity brands that are particularly popular among Price Chopper Shoppers.</p>
 	    <br>
 	  </div>
-
+	<!--
 	<h4>Who are Price Chopper shoppers? </h4>
 	<p style="width:60%;">The following lists shows the most unique attributes of Price Chopper shoppers. On the left are attributes positively associated with Price Chopper patrons, and on the right, negatively associated attributes. </p>
 	</center>
+
 	<div style="width:60%;margin:0 auto;">
 	  <div style="margin:100 auto;height:400px;max-width:400px;border:1px solid #ccc;overflow:auto;float:left;">
 	    <ul style="list-style-type:none;">
@@ -301,9 +308,10 @@ stroke-width:5px;
 		  <li>Other (Working animals owned in household): Yes (-0.8)</li>
 	    </ul>
 	  </div>
-	</div>
-	<div style="  margin-top: 500px;margin-bottom: 100px;">Download the data: <a href="">Brand data</a> - <a href="">Climate data</a> - <a href="">Demographic data</a></div>
-	
+	</div>-->
+	<center>
+	  <div style="  margin-top: 200px;margin-bottom: 100px;">Download the data: <a href="">Brand data</a> - <a href="">Climate data</a> - <a href="">Demographic data</a></div>
+	  </center>
 
         <!-- Optionally reference your vis JS file here, or define in a script tag -->
         <!-- <script type="text/javascript" src="js/my-vis.js"></script> 
