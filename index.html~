@@ -13,7 +13,7 @@
     <body style="background-color:rgba(250, 235, 215, .7);">
       <image src="./logo.png" style="width:10%;"></image>
 	<center>
-          <iframe id="ifm" name="ifm" width="60%" height="60%" frameborder="0" src="https://nacci.sisense.com/app/main#/dashboards/5c993ac4df6099058808e926/widgets/5c99450edf6099058808e92c/?embed=true" scrolling="auto"></iframe>
+          <iframe id="ifm" name="ifm" width="60%" height="500px" frameborder="0" src="https://nacci.sisense.com/app/main#/dashboards/5c993ac4df6099058808e926/widgets/5c99450edf6099058808e92c/?embed=true" scrolling="auto"></iframe>
 	</center>
     </body>
 </html>
