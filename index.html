@@ -6,15 +6,32 @@
 
 
         <!-- Styles for our vis  -->
-<style>
-        body {
-            font: 15px sans-serif;
-        }
-
-
-        .axis path,
-        .axis line {
-            fill: none;
+	<style>
+          body {
+          font: 15px sans-serif;
+          }
+	  
+	  .column {
+	  float: left;
+	  width: 30%;
+	  padding: 10px;
+	  
+	  }
+	  
+	  /* Clear floats after the columns */
+	  .row:after {
+	  content: "";
+	  display: table;
+	  clear: both;
+	  }
+	  
+	  
+	  li{
+	  margin: 7px 0;
+	  }
+          .axis path,
+          .axis line {
+          fill: none;
             stroke: #000;
             shape-rendering: crispEdges;
 
@@ -41,6 +58,13 @@ stroke-width:5px;
             background-color: white;
         }
          </style>
+    <script src="jquery.js"></script> 
+    <script> 
+    $(function(){
+      $("#includedContent").load("list.html"); 
+    });
+    </script> 
+
     </head>
 
 
@@ -48,20 +72,238 @@ stroke-width:5px;
       <image src="./logo.png" style="width:10%;"></image>
 	<center>
 	  <div max-width="60%;">
-	    <h4>How much more or less do Price Chopper shoppers care about climate change?</h4>
+	    <h4>Potential for Green Mountain Energy Products in Price Chopper: How much more or less do Price Chopper shoppers care about climate change vs. the average shopper?</h4>
             <iframe id="ifm" name="ifm" width="60%" height="500px" frameborder="0" src="https://nacci.sisense.com/app/main#/dashboards/5c993ac4df6099058808e926/widgets/5c99450edf6099058808e92c/?embed=true" scrolling="auto"></iframe>
 	    <br>
-	    <p style="width:60%;">The circles on this map correspond to the relative number of Price Chopper shoppers in the north-eastern states. People who primarily do their grocery shopping at Price Chopper tend to be among the more eco-conscious grocery store shoppers in general, but as most of the stores are in states with high sensitivity to climate change, the color of the circles represents the over/under index compared to overall climate sentiment in each state.</p>
+	    <p style="width:60%;">The size of the circles on this map correspond to the relative number of Price Chopper shoppers in the northeastern states. The color of the circles represents the over/under index compared to overall climate sentiment in each state. So the larger the green circle, the greater the opportunity for Green Mountain Energy specifically for Price Chopper shoppers. The smaller, red circles represent less of an opportunity.</p>
 	    <br><br>
-	    <h4>What brands to Price Chopper shoppers use most often</h4>
+	    <h4>What brands to Price Chopper shoppers use most often?</h4>
             <iframe id="ifm" name="ifm" width="60%" height="500px" frameborder="0" src="https://nacci.sisense.com/app/main#/dashboards/5c993ac4df6099058808e926/widgets/5c99a0ecdf6099058808e933/?embed=true" scrolling="auto"></iframe>
 	    <p style="width:60%;">The horizontal axis shows the overall fraction of the population that is a current user of a product. The vertical shows how much this more this product is used by Price Chopper shoppers. Mouse-over the dots the upper right to see the high impact-moderate specificity brands to focus on, and the upper left for moderate impact-high specificity brands that are particularly popular among Price Chopper Shoppers.</p>
 	    <br>
 	  </div>
+
+	<h4>Who are Price Chopper shoppers? </h4>
+	<p style="width:60%;">The following lists shows the most unique attributes of Price Chopper shoppers. On the left are attributes positively associated with Price Chopper patrons, and on the right, negatively associated attributes. </p>
 	</center>
-	<div>
-	  <center>
-        <div id="vis-container"></div>
+	<div style="width:60%;margin:0 auto;">
+	  <div style="margin:100 auto;height:400px;max-width:400px;border:1px solid #ccc;overflow:auto;float:left;">
+	    <ul style="list-style-type:none;">
+	      <li><h4>Positively associated</h4></li>
+	      <li>Country of Birth: Serbia and Montenegro (6.8)</li>
+	      <li>5th Oldest Child Age: 8 (6.5)</li>
+	      <li>Designated Market Area (DMA): Utica (6.5)</li>
+	      <li>Designated Market Area (DMA): Binghamton (6.5)</li>
+	      <li>Designated Market Area (DMA): Syracuse (6.3)</li>
+	      <li>Designated Market Area (DMA): Kansas City (6.2)</li>
+		<li>Designated Market Area (DMA): Albany - Schenectady - Troy (5.9)</li>
+	      <li>Designated Market Area (DMA): Saint Joseph (4.6)</li>
+	      <li>State of Residence: Kansas (4.2)</li>
+		<li>Designated Market Area (DMA): Watertown (4.1)</li>
+		<li>State of Residence: Vermont (3.7)</li>
+		<li>Designated Market Area (DMA): Topeka (3.7)</li>
+		<li>Designated Market Area (DMA): Burlington - Plattsburgh (3.4)</li>
+		<li>Source where most recent pet is from: Other (3.4)</li>
+		<li>Profession or job: Other Sales or Sales support role (3.4)</li>
+		<li>Birth Year: 1976.0 (3.0)</li>
+		<li>age: 42.0 (3.0)</li>
+		<li>Birth Year: 1927.0 (2.9)</li>
+		<li>State of Residence: New York (2.8)</li>
+		<li>Birth Year: 1940.0 (2.7)</li>
+		<li>age: 86.0 (2.3)</li>
+		<li>Profession or job: Sales associate / sales clerk / cashier (2.3)</li>
+		<li>4th Oldest Child Age: 4 (2.3)</li>
+		<li>Birth Year: 1931.0 (2.2)</li>
+		<li>Type of Area Living In: Other (2.1)</li>
+		<li>Lithuanian (foreign languages spoken): Yes (2.1)</li>
+		<li>Living with other adult family members, e.g., Grandparents, Cousins, etc.: Yes (2.0)</li>
+		<li>Tagalog/Filipino: Yes (2.0)</li>
+		<li>Division: West North Central (1.9)</li>
+		<li>Type of organization currently working for: Other (1.8)</li>
+		<li>Number of children under 18 in household: 7.0 (1.8)</li>
+		<li>Profession or job: Teacher or Professor (1.7)</li>
+		<li>age: 19.0 (1.7)</li>
+		<li>Move out of parental home: No (1.7)</li>
+		<li>age: 64.0 (1.7)</li>
+		<li>age: 77.0 (1.6)</li>
+		<li>State of Residence: Missouri (1.6)</li>
+		<li>Type of Area Living In: Rural area (1.6)</li>
+		<li>age: 73.0 (1.6)</li>
+		<li>age: 67.0 (1.5)</li>
+		<li>age: 59.0 (1.5)</li>
+		<li>age: 56.0 (1.5)</li>
+		<li>12 years old: No (1.5)</li>
+		<li>Birth Year: 1951.0 (1.5)</li>
+		<li>Division: Middle Atlantic (1.5)</li>
+		<li>Birth Year: 1952.0 (1.4)</li>
+		<li>Region: Northeast (1.4)</li>
+		<li>4th Oldest Child Age: 10 (1.4)</li>
+		<li>Birth Year: 1954.0 (1.4)</li>
+		<li>Birth Year: 1999.0 (1.4)</li>
+		<li>Type of school/university currently working for: Public elementary school (1.3)</li>
+		<li>2 years old: Yes (1.3)</li>
+		<li>Birth Year: 1962.0 (1.3)</li>
+		<li>age: 36.0 (1.3)</li>
+		<li>Race: White (1.3)</li>
+		<li>2nd Oldest Child Age: Not Applicable (1.3)</li>
+		<li>Designated Market Area (DMA): Jonesboro (1.2)</li>
+		<li>Garden size: Larger than 4 tennis courts (over 10,000 sq ft) (1.2)</li>
+		<li>Household size (2): 2 (1.2)</li>
+		<li>Household size (1): 2.0 (1.2)</li>
+		<li>Profession or job: Clerk (1.2)</li>
+		<li>Birth Year: 1948.0 (1.2)</li>
+		<li>Education (Degree subject studied): Yes (1.2)</li>
+		<li>Prefer not to answer (Life events in the past 12 months): No (1.2)</li>
+		<li>Pregnant: No (1.2)</li>
+		<li>Interaction with smarter people: Yes (1.2)</li>
+		<li>Do you speak Spanish: I can not speak Spanish (1.2)</li>
+		<li>Kid 2 Gender: Not applicable - I do not have a child under 18 (1.1)</li>
+		<li>Oldest Child Age: 13 (1.1)</li>
+		<li>NAICS Industry Code: Non-profit, Community, Religious and Social Service Organizations (1.1)</li>
+		<li>Move house: No (1.1)</li>
+		<li>Closer to my family: No (1.1)</li>
+		<li>Other (Animals (pets or working) owned in household): Yes (1.1)</li>
+		<li>age: 45.0 (1.1)</li>
+		<li>Employment Status: Retired (1.1)</li>
+		<li>Birth Year: 1959.0 (1.1)</li>
+		<li>Purchase or sell a house/flat: No (1.1)</li>
+		<li>2nd Oldest Child Age: 16 (1.1)</li>
+		<li>Birth Year: 1945.0 (1.1)</li>
+		<li>Kid 1 Gender: Not applicable - I do not have a child under 18 (1.1)</li>
+		<li>NAICS Industry Code: Education (1.1)</li>
+		<li>Prefer not to answer (Life events planned in the next 12 months): No (1.1)</li>
+		<li>None of the above (Life events planned in the next 12 months): Yes (1.1)</li>
+		<li>Union membership household: Current member (1.1)</li>
+		<li>Birth Year: 1971.0 (1.0)</li>
+		<li>To travel: No (1.0)</li>
+	    <li>16: Yes (1.0)</li>
+		<li>Oldest Child Age: Not Applicable (1.0)</li>
+		<li>17 years old: Yes (1.0)</li>
+		<li>Took gap Year/career break: No (1.0)</li>
+		<li>White: Yes (1.0)</li>
+		<li>Relationship status: In a relationship and living together (1.0)</li>
+		<li>Designated Market Area (DMA): Wilkes Barre - Scranton (1.0)</li>
+		<li>Birth Year: 1998.0 (1.0)</li>
+		<li>Start college or re-enrol in school: No (1.0)</li>
+		<li>Generation: Pre-Silent Generation (1927 and earlier) (1.0)</li>
+		<li>age: 71.0 (1.0)</li>
+		<li>Fish (including outdoor) (Pets owned in household): Yes (1.0)</li>
+		<li>Tamil (foreign languages spoken): Yes (1.0)</li>
+		<li>age: 65.0 (1.0)</li>
+		
+	    </ul>
+	    
+	  </div>    
+	  
+	  
+	  <div style="margin:0 auto;height:400px;max-width:400px;border:1px solid #ccc;overflow:auto;float:right">
+	    <ul style="list-style-type:none;">
+	      <li><h4>Negatively associated</h4></li
+	    <li>Lithuanian (foreign languages spoken): No (-2.1)</li>
+	    <li>Living with other adult family members, e.g., Grandparents, Cousins, etc.: No (-2.0)</li>
+	    <li>Tagalog/Filipino: No (-2.0)</li>
+	    <li>Move out of parental home: Yes (-1.7)</li>
+		  <li>12 years old: Yes (-1.5)</li>
+		  <li>Birth Year: 1974.0 (-1.4)</li>
+		  <li>age: 58.0 (-1.4)</li>
+		  <li>Birth Year: 1983.0 (-1.4)</li>
+		  <li>In the market for a new job: Not very likely (-1.3)</li>
+		  <li>2 years old: No (-1.3)</li>
+		  <li>Household - time since last moved: 3 to less than 5 years (-1.3)</li>
+		  <li>age: 44.0 (-1.3)</li>
+		  <li>Education (Degree subject studied): No (-1.2)</li>
+		  <li>Source where most recent pet is from: Found it (-1.2)</li>
+		  <li>Kid 2 Gender: Male (-1.2)</li>
+		  <li>Frequency of using outdoor space: Almost every day or more often (-1.2)</li>
+		  <li>Prefer not to answer (Life events in the past 12 months): Yes (-1.2)</li>
+		  <li>Pregnant: Yes (-1.2)</li>
+		  <li>NAICS Industry Code: Real Estate, Rental, and Leasing (-1.2)</li>
+		  <li>Interaction with smarter people: No (-1.2)</li>
+		  <li>age: 23.0 (-1.1)</li>
+		  <li>age: 31.0 (-1.1)</li>
+		  <li>Race: Asian (-1.1)</li>
+		  <li>Move house: Yes (-1.1)</li>
+		  <li>Closer to my family: Yes (-1.1)</li>
+		  <li>Career change if it were possible: Don’t know (-1.1)</li>
+		  <li>Other (Animals (pets or working) owned in household): No (-1.1)</li>
+		  <li>Purchase or sell a house/flat: Yes (-1.1)</li>
+		  <li>Prefer not to answer (Life events planned in the next 12 months): Yes (-1.1)</li>
+		  <li>Birth Year: 1996.0 (-1.1)</li>
+		  <li>age: 79.0 (-1.1)</li>
+		  <li>age: 34.0 (-1.1)</li>
+		  <li>Do you speak Spanish: I speak both Spanish and English equally (-1.1)</li>
+		  <li>None of the above (Life events planned in the next 12 months): No (-1.1)</li>
+		  <li>To travel: Yes (-1.0)</li>
+		  <li>Garden size: Half to 1 tennis court (approximately 1,250 sq ft-2,500 sq ft) (-1.0)</li>
+		  <li>16: No (-1.0)</li>
+		  <li>17 years old: No (-1.0)</li>
+		  <li>Took gap Year/career break: Yes (-1.0)</li>
+		  <li>White: No (-1.0)</li>
+		  <li>Start college or re-enrol in school: Yes (-1.0)</li>
+		  <li>Fish (including outdoor) (Pets owned in household): No (-1.0)</li>
+		  <li>Birth Year: 1992.0 (-1.0)</li>
+		  <li>Tamil (foreign languages spoken): No (-1.0)</li>
+		  <li>age: 26.0 (-1.0)</li>
+		  <li>Buy a car: Yes (-1.0)</li>
+		  <li>Profession or job: Engineer (-1.0)</li>
+		  <li>Age (4-way) 18-29 / 30-44 / 45-64 / 65+: 30-44 (-1.0)</li>
+		  <li>Type school attending: Public (-1.0)</li>
+		  <li>NAICS Industry Code: Engineering, Computer-Related Design, and Architecture (-1.0)</li>
+		  <li>Age (5-way) 18-24 / 25-34 / 35-44 / 45-54 / 55+: 25-34 (-1.0)</li>
+		  <li>Age (6-way) 18-24 / 25-34 / 35-44 / 45-54 / 55-64 / 65+: 25-34 (-1.0)</li>
+		  <li>Level of management at employer: Head of a division, business unit, or large organization within your employer (-1.0)</li>
+		  <li>Kid 1 Gender: Male (-1.0)</li>
+		  <li>Finance / accounting: No (-1.0)</li>
+		  <li>Company Size: 10001+ employees (-1.0)</li>
+		  <li>Finished School/College: Yes (-1.0)</li>
+		  <li>None of the above (Life events in the past 12 months): No (-1.0)</li>
+		  <li>Region: South (-1.0)</li>
+		  <li>Start University: Yes (-1.0)</li>
+		  <li>Moved out of parental home: Yes (-1.0)</li>
+		  <li>Spanish (foreign languages spoken): Yes (-0.9)</li>
+		  <li>Profession or job: Other IT professional (-0.9)</li>
+		  <li>Race: Hispanic (-0.9)</li>
+		  <li>Number of children under 18 in household: 2.0 (-0.9)</li>
+		  <li>Birth Year: 1939.0 (-0.9)</li>
+		  <li>Accounting (Degree subject studied): Yes (-0.9)</li>
+		  <li>Birth Year: 1984.0 (-0.9)</li>
+		  <li>MSFT ITDMs and ITIs: You install, support or maintain either hardware or software.  You may make recommendations, but you do not have significant decision-making authority for your department concerning technology purchases (-0.9)</li>
+		  <li>Started University: Yes (-0.9)</li>
+		  <li>Annual Company Revenue: $101 Million to $500 Million (-0.9)</li>
+		  <li>Would switch careers if money was no object: Don’t know (-0.9)</li>
+		  <li>To give back (Reasons for having a side job): Yes (-0.9)</li>
+		  <li>Engineering (Degree subject studied): Yes (-0.9)</li>
+		  <li>Not applicable - I can't speak any other languages other than English: No (-0.9)</li>
+		  <li>Moved abroad: Yes (-0.9)</li>
+		  <li>NAICS Industry Code: Personal Care and Services (-0.9)</li>
+		  <li>age: 38.0 (-0.9)</li>
+		  <li>To discover something new: Yes (-0.9)</li>
+		  <li>Birth Year: 1977.0 (-0.9)</li>
+		  <li>Profession or job: Sales support / Account Manager (-0.9)</li>
+		  <li>Birth Year: 1972.0 (-0.9)</li>
+		  <li>Sell and purchase a house/flat (i.e. in one transaction): Yes (-0.9)</li>
+		  <li>age: 35.0 (-0.9)</li>
+		  <li>Don't know (mixed race): Yes (-0.9)</li>
+		  <li>Oldest Child Age: 3 (-0.9)</li>
+		  <li>Source where most recent pet is from: Breeder (-0.8)</li>
+		  <li>Get engaged: Yes (-0.8)</li>
+		  <li>To create something (Reasons for having a side job): Yes (-0.8)</li>
+		  <li>Profession or job: Executive Assistant / Administrative Assistant (-0.8)</li>
+		  <li>Mandarin/Cantonese: Yes (-0.8)</li>
+		  <li>Do you speak Spanish: I speak English primarily but can speak Spanish (-0.8)</li>
+		  <li>Frequency of using outdoor space: About once a month (-0.8)</li>
+		  <li>Type of Area Living In: City (-0.8)</li>
+		  <li>Country of Birth: Philippines (-0.8)</li>
+		  <li>The money: Yes (-0.8)</li>
+		  <li>To build an empire: Yes (-0.8)</li>
+		  <li>Purchased first home: Yes (-0.8)</li>
+		  <li>Profession or job: Artist, graphic artist, visual design specialist (-0.8)</li>
+		  <li>Other (Working animals owned in household): Yes (-0.8)</li>
+	    </ul>
+	  </div>
+	</div>
+
+
         <!-- Optionally reference your vis JS file here, or define in a script tag -->
         <!-- <script type="text/javascript" src="js/my-vis.js"></script> 
 	<script src="lib/d3.v3.min.js" charset="utf-8"></script>
@@ -194,8 +436,8 @@ canvas.selectAll(".dot")
 
           };
         </script> -->
-	  </center>
-	  
-	</div>
+
+	
+	
     </body>
 </html>
