@@ -1,0 +1,100 @@
+<!DOCTYPE html>    
+<html>
+<style>
+
+.train_station {
+  fill:#4e7d92;
+}
+
+.cell {
+  stroke: #000;
+  fill-opacity: 0.6;
+  stroke-opacity: 0.3;
+  cursor: pointer;
+}
+
+
+.cell :hover {
+  fill:#000;
+  stroke: #000;
+  fill-opacity: 0.7;
+  stroke-opacity: 0.3;
+  cursor: pointer;
+}
+
+</style>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <div id="map"></div>
+
+    <script src="http://d3js.org/d3.v4.min.js"></script>       
+    <script src="http://d3js.org/topojson.v2.min.js"></script>
+    <script type="text/javascript">
+            // first, dimensions, projection and others basic variables
+
+            var width = 700,
+                height = width*0.85;
+
+            var proj = d3.geoMercator()
+                    .center([5.8287, 48.8320])
+                    .scale(width * 11.5)
+                    .translate([width / 2, height / 2]);
+
+            var path = d3.geoPath()
+                         .projection(proj)
+                         .pointRadius(width*0.0019);
+
+            var radius = d3.scaleSqrt()
+                .domain([0, 100])
+                .range([0, 14]);
+
+            var voronoi = d3.voronoi()
+                .extent([[-1, -1], [width + 1, height + 1]]);
+
+             var svg = d3.select("#map").append("svg")
+                .attr("width", width)
+                .attr("height", height);
+
+            d3.queue()
+              .defer(d3.csv,"data.csv", typeStation)
+              .await(ready)
+            // the typeStation function is very important
+            function ready(err, stations) {
+
+                // first selection
+                var station = svg.selectAll(".station")
+                                 .data(stations)
+                                 .enter()
+                                 .append("g")
+                                 .attr("class", "station");
+
+                // Voronoi's transformation with previous selection
+                station.append("path")
+                       .data(voronoi.polygons(stations.map(proj)))
+                       .attr("class", "cell")
+                       .attr("d", function(d) { return d ? "M" + d.join("L") + "Z" : null; })
+                       .attr("fill", function(d){
+                           // Probleme is here
+                           console.log(d)
+                       });
+
+                svg.append("path")
+                   .datum({type: "MultiPoint", coordinates: stations})
+                   .attr("class", "train_station")
+                   .attr("d", path);  
+
+        };
+
+        // and the function to parse latitude and longitude of csv
+        function typeStation(d) {
+          d[0] = +d.longitude;
+          d[1] = +d.latitude;
+          return d;
+        }
+
+    </script>
+</body>
