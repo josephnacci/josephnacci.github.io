@@ -63,18 +63,30 @@
           pointer-events: none;
           background-color: white;
           }
+
+	  #svg-div{
+	  display: inline-block;
+	  margin: 0 auto;
+	  }
+
         </style>
-	<style
-    <script src="jquery.js"></script> 
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="http://d3js.org/d3.v3.js"></script>
+	<script src="http://d3js.org/topojson.v1.min.js"></script>
 
     </head>
 
 
     <body style="background-color:#f9f9fb;"><!--rgba(250, 235, 215, .7);">-->
-      <image src="./logo.png" style="width:10%;"></image>
-	<center>
-	  <script src="puma_games/d3_script.js"></script>
-
-	</center>
+      <div>
+	<image src="./logo.png" style="width:10%;"></image>
+      </div>
+      
+      <div class="svg-div">
+	<div id="textbox" style="margin-top:40px;"></div>      
+	<script src="d3_script.js" type="text/javascript"></script>
+      </div>
+      
+      
     </body>
 </html>

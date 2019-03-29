@@ -73,7 +73,7 @@
     <body style="background-color:#f9f9fb;"><!--rgba(250, 235, 215, .7);">-->
       <image src="./logo.png" style="width:10%;"></image>
 	<center>
-	  <script src="puma_gamer/
+	  <script src="d3_script.js"></script>
 
 	</center>
     </body>
