@@ -86,8 +86,8 @@ console.log(nielsen);
 
       var prop = d.properties;
       var string = "<p><strong>Market Area Name</strong>: " + prop.dma1 + "</p>";
-      string += "<p><strong>Ratio of Female to Male gamers</strong>: " + prop.value.toFixed(2)*100 + "%</p>";
-      //string += "<p><strong>Nielsen Rank</strong>: " + prop.Rank + "</p>";
+      string += "<p><strong>Ratio of female to male gamers</strong>: " + prop.value.toFixed(2)*100 + "%</p>";
+      string += "<p><strong>Proportion of women who game</strong>: " + prop.prop_women_who_game.toFixed(2)*100 + "</p>";
 
       d3.select("#textbox")
         .html("")
