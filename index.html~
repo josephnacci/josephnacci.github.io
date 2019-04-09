@@ -1,92 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-
-        <!--<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>-->
-
-
-        <!-- Styles for our vis  -->
-	<style>
-          body {
-          font: 15px sans-serif;
-          }
-	  
-	  .column {
-	  float: left;
-	  width: 30%;
-	  padding: 10px;
-	  
-	  }
-	  
-	  /* Clear floats after the columns */
-	  .row:after {
-	  content: "";
-	  display: table;
-	  clear: both;
-	  }
-	  
-	  
-	  li{
-	  margin: 6px 0;
-	  }
-          .axis path,
-          .axis line {
-          fill: none;
-            stroke: #000;
-            shape-rendering: crispEdges;
-
-        }
-	.line{
-	  stroke:dimgrey;
-	  stroke-width:5px;
-	  }
-	  
-	  h1 { font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 24px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 26.4px; }
-	  h4 { font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 18px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 26.4px; }
-	  h3 { font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 15.4px; }
-	  p { font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 20px; } blockquote { font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 21px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 30px; } pre { font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 18.5667px; }
-	  
-	  
-	  .text {
-          font-family: sans-serif;
-          font-size: 11px;
-	  }
-	  
-          .dot {
-          stroke: none;
-          }
-          .tooltip {
-          position: absolute;
-          font-size: 12px;
-          width:  auto;
-          height: auto;
-          pointer-events: none;
-          background-color: white;
-          }
-
-	  #svg-div{
-	  display: inline-block;
-	  margin: 0 auto;
-	  }
-
-        </style>
-	<link rel="stylesheet" type="text/css" href="style.css">
-	<script src="http://d3js.org/d3.v3.js"></script>
-	<script src="http://d3js.org/topojson.v1.min.js"></script>
-
-    </head>
+<html>
+<body>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 
-    <body style="background-color:#f9f9fb;"><!--rgba(250, 235, 215, .7);">-->
-      <div>
-	<image src="./logo.png" style="width:10%;"></image>
-      </div>
-      
-      <div class="svg-div">
-	<div id="textbox" style="margin-top:40px;"></div>      
-	<script src="d3_script.js" type="text/javascript"></script>
-      </div>
-      
-      
-    </body>
+<style>
+#progress-wrp {
+  border: 1px solid #0099CC;
+  padding: 1px;
+  position: relative;
+  height: 30px;
+  border-radius: 3px;
+  margin: 10px;
+  text-align: left;
+  background: #fff;
+  box-shadow: inset 1px 3px 6px rgba(0, 0, 0, 0.12);
+}
+
+#progress-wrp .progress-bar {
+  height: 100%;
+  border-radius: 3px;
+  background-color: #f39ac7;
+  width: 0;
+  box-shadow: inset 1px 1px 10px rgba(0, 0, 0, 0.11);
+}
+
+#progress-wrp .status {
+  top: 3px;
+  left: 50%;
+  position: absolute;
+  display: inline-block;
+  color: #000000;
+}
+</style>
+
+
+
+<form enctype="multipart/form-data" method="post" name="fileinfo">
+  <input type="file" id="image" name="image" type="image/*" onchange="readURL(this);" />
+  <input type="submit" value="Sumbit" />
+</form>
+<br><br>
+<div style="width:500px;"></div>
+<br><br>
+<div>
+  <img id="blah" src="#" alt="" />
+<div>
+<script src="brandid_1and1.js"></script>
+
+</body>
 </html>
