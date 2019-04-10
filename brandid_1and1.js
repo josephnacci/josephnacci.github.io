@@ -8,7 +8,7 @@ form.addEventListener('submit', function(ev) {
 	//oData.append("CustomField", "This is some extra data");
 
 	var oReq = new XMLHttpRequest();
-	oReq.open("POST", "http://35.238.24.13/predict", true);
+	oReq.open("POST", "https://35.238.24.13/predict", true);
 	oReq.onload = function(oEvent) {
 	    if (oReq.status == 200) {
 		var res_text = JSON.parse(this.responseText);
