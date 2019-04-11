@@ -63,7 +63,7 @@ d3.csv("heatmap_man.csv", function(data) {
 	    .domain(myVars)
 	    .padding(0.05);
 	svg.append("g")
-	    .style("font-size", 15)
+	    .style("font-size", 16)
 	    .call(d3.axisLeft(y).tickSize(0))
 	    .select(".domain").remove()
 
@@ -93,7 +93,7 @@ d3.csv("heatmap_man.csv", function(data) {
 	}
 	var mousemove = function(d) {
 	    tooltip
-	    .html("Similarity between " + d.variable + " and " +d.group +"<br>" + d.normval)
+	    .html("Similarity between " + d.variable + " and " +d.group +"<br>" + (d.normval*100).toFixed(1))
 	    .style("left",(d3.mouse(this)[0]+100) + "px")
 	    .style("top", (d3.mouse(this)[1]+10) + "px")
 	}

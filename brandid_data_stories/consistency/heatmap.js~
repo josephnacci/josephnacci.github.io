@@ -14,7 +14,7 @@ var svg = d3.select("#my_dataviz")
 	  "translate(" + margin1.left + "," + margin1.top + ")");
 
 //Read the data
-d3.csv("heatmap.csv", function(data) {
+d3.csv("heatmap_man.csv", function(data) {
 	console.log(data);
 	var maxx = 0;
 	var minn = 1000000;
