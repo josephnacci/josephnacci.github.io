@@ -106,20 +106,20 @@ d3.csv("heatmap_man.csv", function(data) {
 	}
 	
 	// add the squares
+	var circleSize = 12;
 	svg.selectAll()
 	    .data(data, function(d) {return d.group+':'+d.variable;})
 	    .enter()
-	    .append("rect")
-	    .attr("x", function(d) { return x(d.group) })
-	    .attr("y", function(d) { return y(d.variable) })
-	    .attr("rx", 4)
-	    .attr("ry", 4)
+	    .append("circle")
+	    .attr("r", circleSize)
+	    .attr("cx", function(d) { return x(d.group)+circleSize })
+	    .attr("cy", function(d) { return y(d.variable)+circleSize })
 	    .attr("width", x.bandwidth() )
 	    .attr("height", y.bandwidth() )
 	    .style("fill", function(d) { return myColor(d.normval)} )
 	    .style("stroke-width", 4)
 	    .style("stroke", "none")
-	    .style("opacity", 0.8)
+	    .style("opacity", 0.9)
 	    .on("mouseover", mouseover)
 	    .on("mousemove", mousemove)
 	    .on("mouseleave", mouseleave)
