@@ -15,7 +15,7 @@ var svg = d3.select("#my_dataviz")
 
 //Read the data
 d3.csv("heatmap_man.csv", function(data) {
-	console.log(data);
+
 	var maxx = 0;
 	var minn = 1000000;
 	for(var i=0; i< data.length;i++){
@@ -27,7 +27,7 @@ d3.csv("heatmap_man.csv", function(data) {
 	    }
 
 	}
-	console.log(maxx,minn);
+	//console.log(maxx,minn);
 
 
 	for(var i=0; i< data.length;i++){
@@ -109,7 +109,7 @@ d3.csv("heatmap_man.csv", function(data) {
 	svg.selectAll()
 	    .data(data, function(d) {return d.group+':'+d.variable;})
 	    .enter()
-	    .append("circle")
+	    .append("rect")
 	    .attr("x", function(d) { return x(d.group) })
 	    .attr("y", function(d) { return y(d.variable) })
 	    .attr("rx", 4)

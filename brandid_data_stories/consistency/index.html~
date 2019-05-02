@@ -25,7 +25,7 @@ img {
 
 
 .axis {
-       font: 15px sans-serif;
+       font: 12px sans-serif;
      }
 
      .axis path,
