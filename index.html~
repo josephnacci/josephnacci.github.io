@@ -64,31 +64,39 @@ img {
 </head>
 
 <body>
+  <image src="./logo.png" style="width:10%;"></image>
+
   <br><br>
   <div id="head" style="    display: table;margin: 0 auto;">
-    <h2>1and1 Influencer brand consistency</h2>
+    <h1>1and1 Influencer brand consistency</h1>
   </div>
-    <div style="width:60%;  display: table;margin: 0 auto;">
+  <br>
+  <div style="width:60%;  display: table;margin: 0 auto;">
+    <h2>Quantifying style</h2>
+    <p>Using around ninety metrics related to the look and feel of an instagram post, we've begun to quantify the aspects of an image that make up its style. Applying this analysis to the ecosystem of 1and1 brand influencers, we can see that there are influencers who are more or less consistent with the 1and1life brand, as it exists on instagram at the moment.</p>
+    <p>The graphic below charts the similarity between different influencer accounts, as well as how similar they are to the 1and1 brand. The darker the color, the more similar two accounts are. There are clearly two groups of accounts, one in the bottom left and one in the top right that have distinct styles. The differences between these groups is something that we are looking into, which might lead to some interesting insights! </p>
+  </div>
+  <!--    <div style="width:60%;  display: table;margin: 0 10%;">
+	  <div id="chart" style="position:relative;"></div>      
+	  </div>
+    -->
+  
+  <div style="width:60%;  display: table;margin: 0 auto;">
+    <div id="my_dataviz" style="position:relative;"></div>
+  </div>
 
-      <p>Using around ninety metrics related to the look and feel of an instagram post, we've begun to quantify the aspects of an image that make up its style. Applying this analysis to the ecosystem of 1and1 brand influencers, we can see that there are influencers who are more or less consistent with the 1and1life brand, as it exists on instagram at the moment.</p>
-      <p>The graphic below charts the similarity between different influencer accounts, as well as how similar they are to the 1and1 brand</p>
-    </div>
-<!--    <div style="width:60%;  display: table;margin: 0 10%;">
-      <div id="chart" style="position:relative;"></div>      
-    </div>
--->
-
-    <div style="width:60%;  display: table;margin: 0 auto;">
-      <div id="my_dataviz" style="position:relative;"></div>
-    </div>
-<!--    <script src="http://d3js.org/d3.v3.min.js"></script>-->
-<!--    <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>-->
-    <script src="bar_chart.js"></script>
-
-
-
-    <script src="heatmap.js"></script>
-    
+  <div style="width:60%;  display: table;margin: 0 auto;">
+    <h2>Supplement your intuition</h2>
+    <p>Numbers are great, but we want to build tools that supplement, not supplant your intuition. Seeing the pictures that actually make up the dataset is import for building up those gut feelings, so select an influencer from the dropdown below to see some of the images that are most and least consistent with 1and1life's visual style. </p>
+  </div>
+  <!--    <script src="http://d3js.org/d3.v3.min.js"></script>-->
+  <!--    <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>-->
+  <script src="bar_chart.js"></script>
+  
+  
+  
+  <script src="heatmap.js"></script>
+  
   <div class="container">
     <div class="row" id="dropdown">
       <div class="col-sm-1">

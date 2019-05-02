@@ -43,9 +43,14 @@ var defaultFill = "#aaa";
 
 
 
-var colorScale = d3.scale.linear().domain([0.,0.5,1])
+var colorScale = d3.scale.linear().domain([0.,0.1,0.2,0.5,0.7,1,1.25,1.5,1.75,2,5])
       .interpolate(d3.interpolateHcl)
-      .range([d3.rgb("#f7f7f7"),d3.rgb("#67a9cf"),d3.rgb("0C00FF")]);//d3.rgb("#043927"), d3.rgb("#98f898")]);
+    .range([d3.rgb('#67001f'),d3.rgb('#b2182b'),d3.rgb('#d6604d'),d3.rgb('#f4a582'),d3.rgb('#fddbc7'),
+	    d3.rgb('#f7f7f7'),
+	    d3.rgb('#d1e5f0'),d3.rgb('#92c5de'),d3.rgb('#4393c3'),d3.rgb('#2166ac'),d3.rgb('#053061')]);
+
+
+	   //[d3.rgb("#f70000"),d3.rgb("#f7f7f7"),d3.rgb("#67a9cf"),d3.rgb("0C00FF")]);//d3.rgb("#043927"), d3.rgb("#98f898")]);
 
 
 
@@ -81,8 +86,8 @@ console.log(nielsen);
 
       var prop = d.properties;
       var string = "<p><strong>Market Area Name</strong>: " + prop.dma1 + "</p>";
-      string += "<p><strong>Proportion of women who play video games</strong>: " + prop.value.toFixed(2)*100 + "%</p>";
-      //string += "<p><strong>Nielsen Rank</strong>: " + prop.Rank + "</p>";
+      string += "<p><strong>Ratio of female to male gamers</strong>: " + prop.value.toFixed(2)*100 + "%</p>";
+      string += "<p><strong>Proportion of women who game</strong>: " + prop.prop_women_who_game.toFixed(2)*100 + "%</p>";
 
       d3.select("#textbox")
         .html("")

@@ -69,7 +69,7 @@ d3.csv("heatmap_man.csv", function(data) {
 
 	    // Build color scale
 	    var myColor = d3.scaleSequential()
-	    .interpolator(d3.interpolateInferno)
+	    .interpolator(d3.interpolateBlues)//Inferno)
 	    .domain([0,1])
 
 	    // create a tooltip
