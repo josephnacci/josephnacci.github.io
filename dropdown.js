@@ -58,7 +58,7 @@ $('#dd').on('change', function() {
 
 	$.each(simImgNames[user_names.indexOf(i)], function(i, val) {
 	
-		$("<img />").attr("src", val).appendTo($simdiv);
+		$("<img />").attr("src", val).attr("id", "sim_image_"+i).appendTo($simdiv);
 		$("<br><br>").appendTo($simdiv);
 	    });
 
@@ -66,7 +66,7 @@ $('#dd').on('change', function() {
 	$dissimdiv.html("<h4> Least Consistent </h4>");
 	$.each(dissimImgNames[user_names.indexOf(i)], function(i, val) {
 		console.log(val);
-		$("<img />").attr("src", val).appendTo($dissimdiv);
+		$("<img />").attr("src", val).attr("id", "dissim_image_"+i).appendTo($dissimdiv);
 		$("<br><br>").appendTo($dissimdiv);
 	    });
     });
